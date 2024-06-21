@@ -2,7 +2,7 @@
 # import os
 # # from langchain_openai import ChatOpenAI
 # from langchain import hub
-from langchain_chroma import Chroma
+# from langchain_chroma import Chroma
 # from langchain_community.document_loaders import PyPDFLoader
 # from langchain_core.output_parsers import StrOutputParser
 # from langchain_core.runnables import RunnablePassthrough
@@ -87,7 +87,8 @@ from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 
 load_dotenv()
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
+genai.configure(api_key=GOOGLE_API_KEY)
 
 
 # Initialize Vertex AI model
