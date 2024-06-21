@@ -192,14 +192,14 @@ def main():
     st.markdown("""
 
         <style>
-        /* Hide the GitHub icon in the Streamlit app */
+            /* Hide the GitHub icon in the Streamlit app */
            #MainMenu {visibility: hidden;}
             footer {visibility:hidden;}
-         .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
-    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
-    .viewerBadge_text__1JaDK {
-        display: none;
-    }
+            .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+            .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+            .viewerBadge_text__1JaDK {
+            display: none;
+            }
         </style>
         <div class="intro-text">
             Upload your <span class="highlight">PDF</span> or <span class="highlight">DOCX</span> files, 
