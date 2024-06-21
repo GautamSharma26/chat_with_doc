@@ -190,9 +190,28 @@ def main():
 
     st.title("Chat with Your Documents 💁")
     st.markdown("""
-    Upload your PDF or DOCX files, and then ask any questions you have about the content.
-    The system will provide detailed answers based on the uploaded documents.
-    """)
+        <style>
+        /* Hide the GitHub icon in the Streamlit app */
+        .viewerBadge_container__1QSob {
+            display: none;
+        }
+        .intro-text {
+            font-size: 18px;
+            color: #4F4F4F;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #FF6347;
+        }
+        </style>
+        <div class="intro-text">
+            Upload your <span class="highlight">PDF</span> or <span class="highlight">DOCX</span> files, 
+            and then ask any questions you have about the content.
+            The system will provide detailed answers based on the uploaded documents.
+        </div>
+        """, unsafe_allow_html=True)
 
     with st.sidebar:
         st.title("Upload and Process Documents")
