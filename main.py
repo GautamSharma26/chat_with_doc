@@ -89,8 +89,9 @@ from dotenv import load_dotenv
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
+
 # Initialize Vertex AI model
-llm = genai.GenerativeModel("gemini-1.5-flash")
+
 class DocumentProcessor:
     @staticmethod
     def extract_text_from_pdf(file):
@@ -120,6 +121,7 @@ class DocumentProcessor:
         else:
             return False
 
+
 class VectorStoreManager:
     @staticmethod
     def get_text_chunks(text):
@@ -135,7 +137,12 @@ class VectorStoreManager:
     @staticmethod
     def load_vector_store():
         embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-        return FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+        index_path = "faiss_index"
+        if os.path.exists(index_path):
+            return FAISS.load_local(index_path, embeddings, allow_dangerous_deserialization=True)
+        else:
+            return None
+
 
 class ChatManager:
     @staticmethod
@@ -155,21 +162,27 @@ class ChatManager:
 
     @staticmethod
     def get_response(user_question):
-        vector_store = VectorStoreManager.load_vector_store()
-        docs = vector_store.similarity_search(user_question, k=10)
+        if vector_store := VectorStoreManager.load_vector_store():
 
-        chain = ChatManager.get_conversational_chain()
+            docs = vector_store.similarity_search(user_question, k=10)
 
-        response = chain(
-            {"input_documents": docs, "question": user_question},
-            return_only_outputs=True
-        )
-        if "Answer is not available in the context" in response["output_text"]:
-            st.write("Context-specific answer not found. Fetching a general answer.")
-            general_answer = llm.generate_content(user_question)
+            chain = ChatManager.get_conversational_chain()
+
+            response = chain(
+                {"input_documents": docs, "question": user_question},
+                return_only_outputs=True
+            )
+
+            if "Answer is not available in the context" in response["output_text"]:
+                st.write("Context-specific answer not found. Fetching a general answer.")
+                general_answer = genai.GenerativeModel("gemini-1.5-flash").generate_content(user_question)
+                return general_answer.text
+            return response["output_text"]
+        else:
+            st.write("No Docs are available.Data is fetching from general context...")
+            general_answer = genai.GenerativeModel("gemini-1.5-flash").generate_content(user_question)
             return general_answer.text
 
-        return response["output_text"]
 
 def main():
     st.set_page_config(page_title="Chat with Documents", page_icon="💁", layout="wide")
@@ -202,6 +215,7 @@ def main():
             response = ChatManager.get_response(user_question)
             st.markdown("### Reply:")
             st.markdown(response)
+
 
 if __name__ == "__main__":
     main()
