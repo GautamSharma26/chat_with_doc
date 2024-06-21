@@ -195,17 +195,11 @@ def main():
         /* Hide the GitHub icon in the Streamlit app */
            #MainMenu {visibility: hidden;}
             footer {visibility:hidden;}
-            #GithubIcon {visibility: hidden;}
-        .intro-text {
-            font-size: 18px;
-            color: #4F4F4F;
-            text-align: center;
-            margin: 20px 0;
-        }
-        .highlight {
-            font-weight: bold;
-            color: #FF6347;
-        }
+         .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
         </style>
         <div class="intro-text">
             Upload your <span class="highlight">PDF</span> or <span class="highlight">DOCX</span> files, 
