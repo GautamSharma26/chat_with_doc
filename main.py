@@ -193,9 +193,8 @@ def main():
 
         <style>
         /* Hide the GitHub icon in the Streamlit app */
-           .GithubIcon {
-                visibility: hidden;
-        }
+           #MainMenu {visibility: hidden;}
+            footer {visibility:hidden;}
         .intro-text {
             font-size: 18px;
             color: #4F4F4F;
