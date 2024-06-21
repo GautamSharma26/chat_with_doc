@@ -190,11 +190,12 @@ def main():
 
     st.title("Chat with Your Documents 💁")
     st.markdown("""
-        <style>
-        /* Hide the GitHub icon in the Streamlit app */
-       #GithubIcon {
+    #GithubIcon {
                 visibility: hidden;
         }
+        <style>
+        /* Hide the GitHub icon in the Streamlit app */
+       
         .intro-text {
             font-size: 18px;
             color: #4F4F4F;
