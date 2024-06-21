@@ -174,7 +174,7 @@ class ChatManager:
                 return_only_outputs=True
             )
 
-            if "Answer is not available in the context" in response["output_text"]:
+            if "answer is not available in the context" in response["output_text"].lower():
                 st.write("Context-specific answer not found. Fetching a general answer.")
                 general_answer = genai.GenerativeModel("gemini-1.5-flash").generate_content(user_question)
                 return general_answer.text
