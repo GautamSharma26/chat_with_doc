@@ -192,8 +192,8 @@ def main():
     st.markdown("""
         <style>
         /* Hide the GitHub icon in the Streamlit app */
-        .viewerBadge_container__1QSob {
-            display: none;
+       #GithubIcon {
+                visibility: hidden;
         }
         .intro-text {
             font-size: 18px;
