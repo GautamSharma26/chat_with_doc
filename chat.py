@@ -71,6 +71,26 @@ def main():
     st.set_page_config(page_title="Chat with Documents", page_icon="💁", layout="wide")
 
     st.title("ResumeAnswerBot 💁")
+    st.markdown("""
+
+            <style>
+            /* Hide the GitHub icon in the Streamlit app */
+               #MainMenu {visibility: hidden;}
+                footer {visibility:hidden;}
+                .GithubIcon {visibility: hidden;}
+            .intro-text {
+                font-size: 18px;
+                color: #4F4F4F;
+                text-align: center;
+                margin: 20px 0;
+            }
+            .highlight {
+                font-weight: bold;
+                color: #FF6347;
+            }
+            </style>
+         
+            """, unsafe_allow_html=True)
     st.subheader("Ask any professional question related to me..")
     user_question = st.text_input("Type your question here:")
 
