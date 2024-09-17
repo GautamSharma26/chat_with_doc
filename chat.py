@@ -72,8 +72,12 @@ def main():
 
     st.title("ResumeAnswerBot 💁")
     st.markdown("""
+            
     
             <style>
+            #GithubIcon {
+          visibility: hidden;
+        }
             /* Hide the GitHub icon in the Streamlit app */
     
             .intro-text {
@@ -86,6 +90,9 @@ def main():
                 font-weight: bold;
                 color: #FF6347;
             }
+            .css-15zrgzn {display: none}
+        .css-eczf16 {display: none}
+        .css-jn99sy {display: none}
             </style>
          
             """, unsafe_allow_html=True)
